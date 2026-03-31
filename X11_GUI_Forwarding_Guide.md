@@ -26,3 +26,29 @@ Choose one of the following methods:
 ### 🐧If your SSH client is LINUX
 * **No additional setup** is required.
 * Ubuntu and most modern distros have X11 server running by default.
+
+---
+### 🛠️ Troubleshooting (Host Side)
+> **Note**: In most standard Linux server distributions (Ubuntu, Debian, etc.), the following are configured by default. You only need to check these if the GUI does not appear after following the steps above.
+
+If the GUI does not appear, ensure the following settings on the **Remote Server**:
+
+1. **Check SSH Configuration**:
+   In `/etc/ssh/sshd_config`, verify that `X11Forwarding` is enabled.
+   ```bash
+   # On the remote server
+   cat /etc/ssh/sshd_config | grep X11Forwarding
+   # It should say: X11Forwarding yes
+
+2. **Install xauth**:
+Even with the `-Y` flag, the remote server requires `xauth` to generate and manage X11 authentication cookies. Without it, the SSH daemon cannot set up the display forwarding.
+```bash
+# Check if xauth is installed
+which xauth
+
+# If not found, install it:
+# For Ubuntu/Debian
+sudo apt-get update && sudo apt-get install xauth
+
+# For CentOS/RHEL/Fedora
+sudo yum install xorg-x11-xauth
