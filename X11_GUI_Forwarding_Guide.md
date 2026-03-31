@@ -41,14 +41,14 @@ If the GUI does not appear, ensure the following settings on the **Remote Server
    # It should say: X11Forwarding yes
 
 2. **Install xauth**:
-Even with the `-Y` flag, the remote server requires `xauth` to generate and manage X11 authentication cookies. Without it, the SSH daemon cannot set up the display forwarding.
-```bash
-# Check if xauth is installed
-which xauth
+    Even with the `-Y` flag, the remote server requires `xauth` to generate and manage X11 authentication cookies. Without it, the SSH daemon cannot set up the display forwarding.
+    ```bash
+    # Check if xauth is installed
+    which xauth
 
-# If not found, install it:
-# For Ubuntu/Debian
-sudo apt-get update && sudo apt-get install xauth
+    # If not found, install it:
+    # For Ubuntu/Debian
+    sudo apt-get update && sudo apt-get install xauth
 
-# For CentOS/RHEL/Fedora
-sudo yum install xorg-x11-xauth
+    # For CentOS/RHEL/Fedora
+    sudo yum install xorg-x11-xauth
